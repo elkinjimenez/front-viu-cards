@@ -1,0 +1,7 @@
+{
+  "name": "viu-cards",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
