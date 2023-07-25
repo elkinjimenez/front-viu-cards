@@ -1,3 +1,73 @@
-<div class="content-center-100 ion-text-center">
-  <ion-router-link routerLink="/public">Iniciar sesión</ion-router-link>
-</div>
+<ion-fab slot="fixed" vertical="top" horizontal="start">
+  <ion-fab-button (click)="goBack()">
+    <ion-icon name="arrow-back-outline"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+<ion-content [fullscreen]="true">
+  <div class="content-center-100 ion-text-center">
+    <form [formGroup]="formRegister">
+      <div class="ion-margin">
+        <h1>Formulario de creación de cuenta</h1>
+        <small>Por favor complete todos los campos</small>
+      </div>
+      <div class="ion-margin">
+        <ion-input label="Nombre" shape="round" label-placement="floating" fill="outline" placeholder="Elkin"
+          formControlName="firstName"></ion-input>
+        <div *ngIf="formRegister.controls.firstName.invalid && formRegister.controls.firstName.dirty">
+          <small class="text-danger" *ngIf="formRegister.controls.firstName?.errors?.required">El nombre es
+            requerido</small>
+          <small class="text-danger" *ngIf="formRegister.controls.firstName?.errors?.minlength">Mínimo 2
+            caracteres</small>
+          <small class="text-danger" *ngIf="formRegister.controls.firstName?.errors?.maxlength">Máximo 255
+            caracteres</small>
+          <small class="text-danger" *ngIf="formRegister.controls.firstName?.errors?.firstName">El nombre es
+            inválido</small>
+        </div>
+      </div>
+      <div class="ion-margin">
+        <ion-input label="Apellido" shape="round" label-placement="floating" fill="outline" placeholder="Jimenez"
+          formControlName="lastName"></ion-input>
+        <div *ngIf="formRegister.controls.lastName.invalid && formRegister.controls.lastName.dirty">
+          <small class="text-danger" *ngIf="formRegister.controls.lastName?.errors?.required">El apellido es
+            requerido</small>
+          <small class="text-danger" *ngIf="formRegister.controls.lastName?.errors?.minlength">Mínimo 2
+            caracteres</small>
+          <small class="text-danger" *ngIf="formRegister.controls.lastName?.errors?.maxlength">Máximo 255
+            caracteres</small>
+          <small class="text-danger" *ngIf="formRegister.controls.lastName?.errors?.lastName">El apellido es
+            inválido</small>
+        </div>
+      </div>
+      <div class="ion-margin">
+        <ion-input label="Correo electrónico" shape="round" label-placement="floating" fill="outline"
+          placeholder="ejemplo@ejemplo.com" formControlName="email"></ion-input>
+        <div *ngIf="formRegister.controls.email.invalid && formRegister.controls.email.dirty">
+          <small class="text-danger" *ngIf="formRegister.controls.email?.errors?.required">El correo es
+            requerido</small>
+          <small class="text-danger" *ngIf="formRegister.controls.email?.errors?.minlength">Mínimo 2 caracteres</small>
+          <small class="text-danger" *ngIf="formRegister.controls.email?.errors?.maxlength">Máximo 255
+            caracteres</small>
+          <small class="text-danger" *ngIf="formRegister.controls.email?.errors?.email">El correo es inválido</small>
+        </div>
+      </div>
+      <div class="ion-margin">
+        <ion-input label="Contraseña" shape="round" label-placement="floating" fill="outline" type="password"
+          placeholder="*******" formControlName="password"></ion-input>
+        <div *ngIf="formRegister.controls.password.invalid && formRegister.controls.password.dirty">
+          <small class="text-danger" *ngIf="formRegister.controls.password?.errors?.required">La constraseña es
+            requerida</small>
+          <small class="text-danger" *ngIf="formRegister.controls.password?.errors?.minlength">Mínimo 2
+            caracteres</small>
+          <small class="text-danger" *ngIf="formRegister.controls.password?.errors?.maxlength">Máximo 255
+            caracteres</small>
+        </div>
+      </div>
+      <div class="ion-margin">
+        <ion-button class="ion-text-capitalize" fill="solid" expand="block" shape="round" size="large"
+          (click)="register()" [disabled]="!formRegister.valid">
+          Crear cuenta
+        </ion-button>
+      </div>
+    </form>
+  </div>
+</ion-content>

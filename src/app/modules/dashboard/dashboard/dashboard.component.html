@@ -1,0 +1,10 @@
+<ion-fab slot="fixed" vertical="top" horizontal="end">
+  <ion-fab-button (click)="mostrarActionSheet()">
+    <ion-icon name="person-outline"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+<ion-content [fullscreen]="true" *ngIf="fields.user">
+  <div class="ion-margin">
+    <h1>Hola {{fields.user.firstName}}</h1>
+  </div>
+</ion-content>

@@ -16,4 +16,8 @@ export class AuthService {
     return this.$http.put(`${environment.urlApi}user/login`, body);
   }
 
+  public register(body: User) {
+    return this.$http.post(`${environment.urlApi}user/create`, body);
+  }
+
 }

@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { RespGeneral } from 'src/app/models/resp-general';
 import { User } from 'src/app/models/user';
@@ -26,6 +26,7 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private $auth: AuthService,
     private fields: FieldsService,
+    private $router: Router,
     private utils: Utils,
   ) {
     this.formLogin = this.fb.group({
@@ -48,14 +49,15 @@ export class LoginComponent implements OnInit {
   protected auth() {
     const body: User = {
       email: this.formLogin.controls.email.value,
-      password: this.formLogin.controls.password.value,
+      password: this.utils.convertSHA256(this.formLogin.controls.password.value),
     }
     this.$auth.auth(body).subscribe((resp: RespGeneral) => {
       console.log('Auth: ', resp);
       if (resp.code == 200) {
         this.fields.user = resp.data as User;
-        sessionStorage.setItem('userLoggedIn', JSON.stringify(this.fields.user));
-        // this.$router.navigate(['/home']);
+        delete this.fields.user.password;
+        sessionStorage.setItem(btoa('userLoggedIn'), btoa(JSON.stringify(this.fields.user)));
+        this.$router.navigate(['/dashboard']);
         this.utils.showMessage({ color: 'primary', message: `Bienvenido ${this.fields.user.firstName} ${this.fields.user.lastName}`, position: 'top' });
       } else {
         this.utils.showMessage({ color: 'danger', message: resp.message, position: 'top' });
