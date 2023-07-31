@@ -2,18 +2,19 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { IonicModule, NavController } from '@ionic/angular';
+import { IonicModule } from '@ionic/angular';
 import { RespGeneral } from 'src/app/models/resp-general';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
 import { Utils } from 'src/app/utils/util';
+import { GoBackComponent } from '../../shared/go-back/go-back.component';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
   standalone: true,
-  imports: [IonicModule, RouterLink, ReactiveFormsModule, CommonModule]
+  imports: [IonicModule, RouterLink, ReactiveFormsModule, CommonModule, GoBackComponent]
 })
 export class RegisterComponent implements OnInit {
 
@@ -24,7 +25,6 @@ export class RegisterComponent implements OnInit {
     private $auth: AuthService,
     private $router: Router,
     private utils: Utils,
-    private navCtrl: NavController,
   ) {
     this.formRegister = this.fb.group({
       firstName: ['Elkin', [
@@ -69,13 +69,6 @@ export class RegisterComponent implements OnInit {
         this.utils.showMessage({ color: 'danger', message: resp.message, position: 'top' });
       }
     });
-  }
-
-  /**
-   * The function "goBack" is used to navigate back to the previous page in a navigation stack.
-   */
-  protected goBack() {
-    this.navCtrl.pop();
   }
 
 }

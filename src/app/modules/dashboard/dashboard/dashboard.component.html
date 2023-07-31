@@ -3,8 +3,21 @@
     <ion-icon name="person-outline"></ion-icon>
   </ion-fab-button>
 </ion-fab>
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Hola {{fields.user.firstName}}</ion-title>
+  </ion-toolbar>
+</ion-header>
 <ion-content [fullscreen]="true" *ngIf="fields.user">
-  <div class="ion-margin">
-    <h1>Hola {{fields.user.firstName}}</h1>
+  <div class="content-center-85" *ngIf="listBanks.length === 0">
+    <ion-content>
+      <div class="container-center">
+        <small>No tienes bancos creados</small>
+        <h4>Crear mi primer banco de tarjetas</h4>
+        <ion-fab-button routerLink="newBank">
+          <ion-icon name="add-outline"></ion-icon>
+        </ion-fab-button>
+      </div>
+    </ion-content>
   </div>
 </ion-content>
