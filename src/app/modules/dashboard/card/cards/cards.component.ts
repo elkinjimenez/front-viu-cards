@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { GoBackComponent } from 'src/app/modules/shared/go-back/go-back.component';
 import { ButtonProfileComponent } from '../../profile/button-profile/button-profile.component';
+import { FieldsService } from 'src/app/services/fields.service';
 
 @Component({
   selector: 'app-cards',
@@ -13,7 +14,9 @@ import { ButtonProfileComponent } from '../../profile/button-profile/button-prof
 })
 export class CardsComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    protected fields: FieldsService,
+  ) { }
 
   ngOnInit() { }
 

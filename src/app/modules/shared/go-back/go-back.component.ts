@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { IonicModule, NavController } from '@ionic/angular';
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { IonicModule } from '@ionic/angular';
 
 @Component({
   selector: 'app-go-back',
@@ -11,17 +12,19 @@ import { IonicModule, NavController } from '@ionic/angular';
 })
 export class GoBackComponent implements OnInit {
 
+  @Input() path: string | undefined;
+
   constructor(
-    private navCtrl: NavController,
+    private $router: Router,
   ) { }
 
   ngOnInit() { }
 
   /**
-   * The function "goBack" is used to navigate back to the previous page in a navigation stack.
+   * The function "goBack" navigates the user back to the previous page using the Angular router.
    */
   protected goBack() {
-    this.navCtrl.pop();
+    this.$router.navigate([this.path]);
   }
 
 }

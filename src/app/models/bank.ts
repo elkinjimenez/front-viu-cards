@@ -1,9 +1,9 @@
 export interface Bank {
-  id: number
+  id?: number
   name: string
-  description: string
-  image: any
-  state: number
-  idLanguaje: number
-  idUser: number
+  description?: string
+  image?: any
+  state?: number
+  idLanguaje?: number
+  idUser?: number
 }

@@ -1,5 +1,18 @@
-<app-go-back></app-go-back>
+<app-go-back [path]="'/dashboard/newBank'"></app-go-back>
 <app-button-profile></app-button-profile>
-<p>
-  cards works!
-</p>
+<ion-header>
+  <ion-toolbar class="ion-text-center">
+    <ion-title>{{fields.currentBank.name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content [fullscreen]="true" *ngIf="fields.user">
+  <div class="content-center-85">
+    <div class="container-center">
+      <small>No tienes bancos creados</small>
+      <h4>Crear mi primer banco de tarjetas</h4>
+      <ion-fab-button routerLink="newBank">
+        <ion-icon name="add-outline"></ion-icon>
+      </ion-fab-button>
+    </div>
+  </div>
+</ion-content>

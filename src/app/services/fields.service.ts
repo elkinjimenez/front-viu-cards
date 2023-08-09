@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { User } from '../models/user';
 import { Router } from '@angular/router';
+import { Bank } from '../models/bank';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +9,7 @@ import { Router } from '@angular/router';
 export class FieldsService {
 
   public user!: User;
+  public currentBank!: Bank;
 
   constructor(
     private $router: Router,
@@ -19,7 +21,7 @@ export class FieldsService {
     const user = sessionStorage.getItem(btoa('userLoggedIn'));
     if (user) {
       this.user = JSON.parse(atob(user));
-      this.$router.navigate(['/dashboard']);
+      // this.$router.navigate(['/dashboard']);
     } else {
       this.user = {
         email: 'ef.c@df.c',

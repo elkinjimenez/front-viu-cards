@@ -45,6 +45,9 @@ export class NewBankComponent implements OnInit {
   ngOnInit() { }
 
   protected create() {
+    this.fields.currentBank = {
+      name: 'Números',
+    };
     this.$router.navigate(['/dashboard/cards']);
   }
 
