@@ -1,0 +1,11 @@
+<ion-content [fullscreen]="true" *ngIf="fields.user">
+  <div class="content-center-85" *ngIf="listBanks.length === 0">
+    <div class="container-center">
+      <small>No tienes bancos creados</small>
+      <h4>Crear mi primer banco de tarjetas</h4>
+      <ion-fab-button routerLink="newBank">
+        <ion-icon name="add-outline"></ion-icon>
+      </ion-fab-button>
+    </div>
+  </div>
+</ion-content>
