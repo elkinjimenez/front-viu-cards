@@ -10,13 +10,14 @@ import { SharedModule } from 'src/app/modules/shared/shared.module';
 import { BankService } from 'src/app/services/bank.service';
 import { FieldsService } from 'src/app/services/fields.service';
 import { Utils } from 'src/app/utils/util';
+import { ButtonProfileComponent } from '../../profile/button-profile/button-profile.component';
 
 @Component({
   selector: 'app-new-bank',
   templateUrl: './new-bank.component.html',
   styleUrls: ['./new-bank.component.scss'],
   standalone: true,
-  imports: [SharedModule, GoBackComponent, IonicModule, CommonModule, ReactiveFormsModule]
+  imports: [SharedModule, GoBackComponent, IonicModule, CommonModule, ReactiveFormsModule, ButtonProfileComponent]
 })
 export class NewBankComponent implements OnInit {
 
@@ -37,14 +38,14 @@ export class NewBankComponent implements OnInit {
         Validators.minLength(2),
         Validators.maxLength(255),
       ]],
-
+      image: [''],
     });
   }
 
   ngOnInit() { }
 
   protected create() {
-
+    this.$router.navigate(['/dashboard/cards']);
   }
 
   protected findByEmailUserAndName() {

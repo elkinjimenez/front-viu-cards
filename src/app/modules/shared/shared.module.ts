@@ -3,12 +3,9 @@ import { CommonModule } from '@angular/common';
 import { GoBackComponent } from './go-back/go-back.component';
 
 @NgModule({
-  declarations: [
-  ],
+  declarations: [],
   imports: [
-    CommonModule
-  ], exports: [
-
+    CommonModule,
   ]
 })
 export class SharedModule { }

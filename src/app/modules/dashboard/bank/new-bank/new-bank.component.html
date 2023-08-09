@@ -1,4 +1,5 @@
 <app-go-back></app-go-back>
+<app-button-profile></app-button-profile>
 <ion-content [fullscreen]="true">
   <div class="content-center-100 ion-text-center">
     <form [formGroup]="myForm">
@@ -20,6 +21,17 @@
             inválido</small>
         </div>
         <small class="text-danger" *ngIf="exits">Ya tienes un banco de tarjetas con este nombre</small>
+      </div>
+      <div class="ion-margin">
+        <ion-item shape="round" fill="outline">
+          <ion-label position="stacked">Agregar imagen</ion-label>
+          <ion-input type="file" formControlName="image" accept=".jpg, .png"></ion-input>
+        </ion-item>
+        <small class="text-danger" *ngIf="exits">Ya tienes un banco de tarjetas con este nombre</small>
+      </div>
+      <div class="ion-margin">
+        <ion-textarea label="Descripción" labelPlacement="floating" fill="outline" shape="round"
+          placeholder="Descripción del banco a crear"></ion-textarea>
       </div>
       <div class="ion-margin">
         <ion-button class="ion-text-capitalize" fill="solid" expand="block" shape="round" size="large"
