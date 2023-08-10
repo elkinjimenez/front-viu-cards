@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { Bank } from 'src/app/models/bank';
 import { RespGeneral } from 'src/app/models/resp-general';
@@ -12,7 +13,7 @@ import { Utils } from 'src/app/utils/util';
   templateUrl: './banks.component.html',
   styleUrls: ['./banks.component.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule]
+  imports: [IonicModule, CommonModule, RouterLink]
 })
 export class BanksComponent implements OnInit {
 

@@ -11,24 +11,6 @@ export class FieldsService {
   public user!: User;
   public currentBank!: Bank;
 
-  constructor(
-    private $router: Router,
-  ) {
-    this.validateLogin();
-  }
+  constructor() { }
 
-  validateLogin() {
-    const user = sessionStorage.getItem(btoa('userLoggedIn'));
-    if (user) {
-      this.user = JSON.parse(atob(user));
-      // this.$router.navigate(['/dashboard']);
-    } else {
-      this.user = {
-        email: 'ef.c@df.c',
-        firstName: 'Luisa',
-        lastName: 'W'
-      }
-      // this.$router.navigate(['/public']);
-    }
-  }
 }

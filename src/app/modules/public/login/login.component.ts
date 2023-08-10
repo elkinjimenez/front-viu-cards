@@ -44,7 +44,24 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.validateLogin();
+  }
+
+  validateLogin() {
+    const user = sessionStorage.getItem(btoa('userLoggedIn'));
+    if (user) {
+      this.fields.user = JSON.parse(atob(user));
+      this.$router.navigate(['/dashboard']);
+    } else {
+      this.fields.user = {
+        email: 'ef.c@df.c',
+        firstName: 'Luisa',
+        lastName: 'W'
+      }
+      this.$router.navigate(['/public']);
+    }
+  }
 
   protected auth() {
     const body: User = {
