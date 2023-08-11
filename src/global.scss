@@ -51,7 +51,7 @@
   height: 100%;
 }
 
-.no-lines ion-item {
+ion-list ion-item {
   --inner-border-width: 0; // Oculta las líneas de separación internas
   --border-width: 0; // Oculta las líneas de separación exteriores
 }

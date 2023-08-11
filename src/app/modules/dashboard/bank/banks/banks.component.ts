@@ -35,7 +35,7 @@ export class BanksComponent implements OnInit {
         (resp: RespGeneral) => {
           console.log('findByEmailUser: ', resp);
           if (resp.code == 200 && resp.data) {
-            // this.listBanks = resp.data as Bank[];
+            this.listBanks = resp.data as Bank[];
           }
         }
       )
