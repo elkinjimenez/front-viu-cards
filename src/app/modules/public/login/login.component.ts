@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
     private $router: Router,
     private utils: Utils,
   ) {
+    this.validateLogin();
     this.formLogin = this.fb.group({
       email: ['example2@example.com', [
         Validators.required,
@@ -44,9 +45,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-    this.validateLogin();
-  }
+  ngOnInit() { }
 
   validateLogin() {
     const user = sessionStorage.getItem(btoa('userLoggedIn'));
@@ -55,10 +54,11 @@ export class LoginComponent implements OnInit {
       this.$router.navigate(['/dashboard']);
     } else {
       this.fields.user = {
-        email: 'ef.c@df.c',
+        email: 'ef.c@df.com',
         firstName: 'Luisa',
         lastName: 'W'
       }
+      sessionStorage.setItem(btoa('userLoggedIn'), btoa(JSON.stringify(this.fields.user)));
       this.$router.navigate(['/public']);
     }
   }
