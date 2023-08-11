@@ -39,11 +39,6 @@
   align-items: center;
 }
 
-ion-button,
-ion-icon {
-  color: white;
-}
-
 .text-danger {
   color: var(--ion-color-danger);
 }
@@ -54,4 +49,9 @@ ion-icon {
   align-items: center;
   justify-content: center;
   height: 100%;
+}
+
+.no-lines ion-item {
+  --inner-border-width: 0; // Oculta las líneas de separación internas
+  --border-width: 0; // Oculta las líneas de separación exteriores
 }

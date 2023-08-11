@@ -1,11 +1,15 @@
 <ion-content [fullscreen]="true">
+  <div class="ion-text-center ion-padding">
+    <h3>Hola {{fields.user.firstName}}</h3>
+  </div>
   <div *ngIf="listBanks.length === 0">
-    <ion-card class="ion-text-center dotted-border" routerLink="newBank">
+    <ion-card class="ion-text-center dotted-border ion-margin" routerLink="newBank">
       <ion-card-header>
         <ion-card-title class="ion-margin-top">No tienes bancos creados</ion-card-title>
       </ion-card-header>
-      <ion-card-content class="ion-margin">
-        <h1 class="ion-padding">Crear mi <br> primer banco <br> de tarjetas</h1>
+      <ion-card-content>
+        <ion-icon size="large" class="ion-color-light" name="add-circle-outline"></ion-icon>
+        <h1 class="ion-padding">Crear mi primer banco de tarjetas</h1>
       </ion-card-content>
     </ion-card>
   </div>
