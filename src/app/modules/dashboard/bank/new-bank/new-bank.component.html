@@ -32,10 +32,11 @@
         <ion-textarea label="Descripción" labelPlacement="floating" fill="outline"
           placeholder="Descripción del banco a crear"></ion-textarea>
       </div>
-      <div class="ion-margin">
-        <ion-button class="ion-text-capitalize" fill="solid" expand="block" size="large" (click)="create()"
-          [disabled]="!(myForm.valid && !exits)">Crear banco</ion-button>
-      </div>
+
     </form>
   </div>
 </ion-content>
+<div class="ion-margin">
+  <ion-button class="ion-text-capitalize" fill="solid" expand="block" size="large" (click)="create()"
+    [disabled]="!(myForm.valid && !exits)">Crear banco</ion-button>
+</div>

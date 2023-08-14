@@ -4,10 +4,12 @@
   </ion-fab-button>
 </ion-fab>
 <ion-content [fullscreen]="true">
-  <div class="content-center-100 ion-text-center">
+  <div class="ion-text-center">
     <form [formGroup]="formLogin">
       <div class="ion-margin">
+        <ion-icon name="person-circle-outline" class="icon-profile ion-margin-top"></ion-icon>
         <h1>Inicio de sesión</h1>
+        <small>Por favor complete todos los campos</small>
       </div>
       <div class="ion-margin">
         <ion-input label="Correo electrónico" label-placement="floating" fill="outline"
@@ -31,14 +33,14 @@
         </div>
       </div>
       <div class="ion-margin">
-        <ion-button class="ion-text-capitalize" fill="solid" expand="block" size="large" (click)="auth()"
-          [disabled]="!formLogin.valid">
-          Iniciar sesión
-        </ion-button>
-      </div>
-      <div class="ion-margin">
         <ion-router-link routerLink="/dashboard">TEST</ion-router-link>
       </div>
     </form>
   </div>
 </ion-content>
+<div class="ion-margin">
+  <ion-button class="ion-text-capitalize" fill="solid" expand="block" size="large" (click)="auth()"
+    [disabled]="!formLogin.valid">
+    Iniciar sesión
+  </ion-button>
+</div>

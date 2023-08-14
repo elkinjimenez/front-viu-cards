@@ -1,9 +1,9 @@
 <app-go-back [path]="'public'"></app-go-back>
 <ion-content [fullscreen]="true">
-  <div class="content-center-100 ion-text-center">
+  <div class="ion-text-center">
     <form [formGroup]="formRegister">
       <div class="ion-margin">
-        <h1>Formulario de creación de cuenta</h1>
+        <h1>Formulario de <br> creación de cuenta</h1>
         <small>Por favor complete todos los campos</small>
       </div>
       <div class="ion-margin">
@@ -58,10 +58,10 @@
             caracteres</small>
         </div>
       </div>
-      <div class="ion-margin">
-        <ion-button class="ion-text-capitalize" fill="solid" expand="block" size="large" (click)="register()"
-          [disabled]="!formRegister.valid">Crear cuenta</ion-button>
-      </div>
     </form>
   </div>
 </ion-content>
+<div class="ion-margin">
+  <ion-button class="ion-text-capitalize" fill="solid" expand="block" size="large" (click)="register()"
+    [disabled]="!formRegister.valid">Crear cuenta</ion-button>
+</div>
