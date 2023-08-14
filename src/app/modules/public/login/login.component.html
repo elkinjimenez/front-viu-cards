@@ -10,7 +10,7 @@
         <h1>Inicio de sesión</h1>
       </div>
       <div class="ion-margin">
-        <ion-input label="Correo electrónico" shape="round" label-placement="floating" fill="outline"
+        <ion-input label="Correo electrónico" label-placement="floating" fill="outline"
           placeholder="ejemplo@ejemplo.com" formControlName="email"></ion-input>
         <div *ngIf="formLogin.controls.email.invalid && formLogin.controls.email.dirty">
           <small class="text-danger" *ngIf="formLogin.controls.email?.errors?.required">El correo es requerido</small>
@@ -20,8 +20,8 @@
         </div>
       </div>
       <div class="ion-margin">
-        <ion-input label="Contraseña" shape="round" label-placement="floating" fill="outline" type="password"
-          placeholder="*******" formControlName="password"></ion-input>
+        <ion-input label="Contraseña" label-placement="floating" fill="outline" type="password" placeholder="*******"
+          formControlName="password"></ion-input>
         <div *ngIf="formLogin.controls.password.invalid && formLogin.controls.password.dirty">
           <small class="text-danger" *ngIf="formLogin.controls.password?.errors?.required">La constraseña es
             requerida</small>
@@ -31,7 +31,7 @@
         </div>
       </div>
       <div class="ion-margin">
-        <ion-button class="ion-text-capitalize" fill="solid" expand="block" shape="round" size="large" (click)="auth()"
+        <ion-button class="ion-text-capitalize" fill="solid" expand="block" size="large" (click)="auth()"
           [disabled]="!formLogin.valid">
           Iniciar sesión
         </ion-button>

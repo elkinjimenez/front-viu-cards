@@ -15,7 +15,7 @@ const routes: Routes = [
       { path: 'profile', component: ProfileComponent },
       { path: 'newBank', component: NewBankComponent },
       { path: 'cards', component: CardsComponent },
-      { path: 'newCard', component: NewCardComponent },
+      { path: 'cards/newCard', component: NewCardComponent },
     ]
   },
 ];

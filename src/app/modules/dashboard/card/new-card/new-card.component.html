@@ -1,3 +1,7 @@
-<p>
-  new-card works!
-</p>
+<app-go-back [path]="'/dashboard/cards'"></app-go-back>
+<ion-content [fullscreen]="true">
+  <div class="ion-text-center" *ngIf="fields.currentBank">
+    <h1>Crear nueva tarjeta</h1>
+    <small>Por favor complete todos los campos</small>
+  </div>
+</ion-content>

@@ -7,7 +7,7 @@
         <small>Por favor complete todos los campos</small>
       </div>
       <div class="ion-margin">
-        <ion-input label="Nombre" shape="round" label-placement="floating" fill="outline" placeholder="Elkin"
+        <ion-input label="Nombre" label-placement="floating" fill="outline" placeholder="Elkin"
           formControlName="firstName"></ion-input>
         <div *ngIf="formRegister.controls.firstName.invalid && formRegister.controls.firstName.dirty">
           <small class="text-danger" *ngIf="formRegister.controls.firstName?.errors?.required">El nombre es
@@ -21,7 +21,7 @@
         </div>
       </div>
       <div class="ion-margin">
-        <ion-input label="Apellido" shape="round" label-placement="floating" fill="outline" placeholder="Jimenez"
+        <ion-input label="Apellido" label-placement="floating" fill="outline" placeholder="Jimenez"
           formControlName="lastName"></ion-input>
         <div *ngIf="formRegister.controls.lastName.invalid && formRegister.controls.lastName.dirty">
           <small class="text-danger" *ngIf="formRegister.controls.lastName?.errors?.required">El apellido es
@@ -35,7 +35,7 @@
         </div>
       </div>
       <div class="ion-margin">
-        <ion-input label="Correo electrónico" shape="round" label-placement="floating" fill="outline"
+        <ion-input label="Correo electrónico" label-placement="floating" fill="outline"
           placeholder="ejemplo@ejemplo.com" formControlName="email"></ion-input>
         <div *ngIf="formRegister.controls.email.invalid && formRegister.controls.email.dirty">
           <small class="text-danger" *ngIf="formRegister.controls.email?.errors?.required">El correo es
@@ -47,8 +47,8 @@
         </div>
       </div>
       <div class="ion-margin">
-        <ion-input label="Contraseña" shape="round" label-placement="floating" fill="outline" type="password"
-          placeholder="*******" formControlName="password"></ion-input>
+        <ion-input label="Contraseña" label-placement="floating" fill="outline" type="password" placeholder="*******"
+          formControlName="password"></ion-input>
         <div *ngIf="formRegister.controls.password.invalid && formRegister.controls.password.dirty">
           <small class="text-danger" *ngIf="formRegister.controls.password?.errors?.required">La constraseña es
             requerida</small>
@@ -59,8 +59,8 @@
         </div>
       </div>
       <div class="ion-margin">
-        <ion-button class="ion-text-capitalize" fill="solid" expand="block" shape="round" size="large"
-          (click)="register()" [disabled]="!formRegister.valid">Crear cuenta</ion-button>
+        <ion-button class="ion-text-capitalize" fill="solid" expand="block" size="large" (click)="register()"
+          [disabled]="!formRegister.valid">Crear cuenta</ion-button>
       </div>
     </form>
   </div>
