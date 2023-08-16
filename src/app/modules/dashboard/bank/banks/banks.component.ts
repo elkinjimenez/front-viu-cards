@@ -1,7 +1,5 @@
-import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
-import { IonicModule } from '@ionic/angular';
+import { Router } from '@angular/router';
 import { Bank } from 'src/app/models/bank';
 import { RespGeneral } from 'src/app/models/resp-general';
 import { BankService } from 'src/app/services/bank.service';
@@ -12,8 +10,6 @@ import { Utils } from 'src/app/utils/util';
   selector: 'app-banks',
   templateUrl: './banks.component.html',
   styleUrls: ['./banks.component.scss'],
-  standalone: true,
-  imports: [IonicModule, CommonModule, RouterLink]
 })
 export class BanksComponent implements OnInit {
 

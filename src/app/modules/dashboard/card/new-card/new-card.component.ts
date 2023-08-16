@@ -1,11 +1,8 @@
-import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { IonicModule } from '@ionic/angular';
 import { RespGeneral } from 'src/app/models/resp-general';
 import { Word } from 'src/app/models/word';
-import { GoBackComponent } from 'src/app/modules/shared/go-back/go-back.component';
 import { FieldsService } from 'src/app/services/fields.service';
 import { WordService } from 'src/app/services/word.service';
 import { Utils } from 'src/app/utils/util';
@@ -14,8 +11,6 @@ import { Utils } from 'src/app/utils/util';
   selector: 'app-new-card',
   templateUrl: './new-card.component.html',
   styleUrls: ['./new-card.component.scss'],
-  standalone: true,
-  imports: [CommonModule, IonicModule, ReactiveFormsModule, GoBackComponent]
 })
 export class NewCardComponent implements OnInit {
 

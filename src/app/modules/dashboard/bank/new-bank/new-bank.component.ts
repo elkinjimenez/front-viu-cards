@@ -1,12 +1,8 @@
-import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { IonicModule } from '@ionic/angular';
 import { Bank } from 'src/app/models/bank';
 import { RespGeneral } from 'src/app/models/resp-general';
-import { GoBackComponent } from 'src/app/modules/shared/go-back/go-back.component';
-import { SharedModule } from 'src/app/modules/shared/shared.module';
 import { BankService } from 'src/app/services/bank.service';
 import { FieldsService } from 'src/app/services/fields.service';
 import { Utils } from 'src/app/utils/util';
@@ -15,8 +11,6 @@ import { Utils } from 'src/app/utils/util';
   selector: 'app-new-bank',
   templateUrl: './new-bank.component.html',
   styleUrls: ['./new-bank.component.scss'],
-  standalone: true,
-  imports: [SharedModule, GoBackComponent, IonicModule, CommonModule, ReactiveFormsModule]
 })
 export class NewBankComponent implements OnInit {
 

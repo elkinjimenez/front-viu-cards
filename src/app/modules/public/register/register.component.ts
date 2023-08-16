@@ -1,20 +1,15 @@
-import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
-import { IonicModule } from '@ionic/angular';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { RespGeneral } from 'src/app/models/resp-general';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
 import { Utils } from 'src/app/utils/util';
-import { GoBackComponent } from '../../shared/go-back/go-back.component';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
-  standalone: true,
-  imports: [IonicModule, RouterLink, ReactiveFormsModule, CommonModule, GoBackComponent]
 })
 export class RegisterComponent implements OnInit {
 

@@ -1,14 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ActionSheetController, IonicModule } from '@ionic/angular';
+import { ActionSheetController } from '@ionic/angular';
 import { FieldsService } from 'src/app/services/fields.service';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
-  standalone: true,
-  imports: [IonicModule]
 })
 export class ProfileComponent implements OnInit {
 
