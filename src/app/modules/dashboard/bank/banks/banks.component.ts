@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { Bank } from 'src/app/models/bank';
 import { RespGeneral } from 'src/app/models/resp-general';
@@ -23,10 +23,12 @@ export class BanksComponent implements OnInit {
     protected fields: FieldsService,
     private utils: Utils,
     private $bank: BankService,
-  ) { }
+    private $router: Router,
+  ) {
+    this.findBankByEmailUser();
+  }
 
   ngOnInit() {
-    this.findBankByEmailUser();
   }
 
   findBankByEmailUser() {
@@ -36,12 +38,19 @@ export class BanksComponent implements OnInit {
           console.log('findByEmailUser: ', resp);
           if (resp.code == 200 && resp.data) {
             this.listBanks = resp.data as Bank[];
+          } else {
+            this.utils.showMessage({ position: 'top', color: 'danger', message: resp.message });
           }
         }
       )
     } else {
       this.utils.showMessage({ position: 'top', color: 'danger', message: 'No hay usuario logueado.' })
     }
+  }
+
+  protected selectBank(bank: Bank) {
+    this.fields.currentBank = bank;
+    this.$router.navigate(['/dashboard/cards']);
   }
 
 }

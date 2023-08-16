@@ -6,6 +6,10 @@
         <h1>Crear nuevo banco</h1>
         <small>Por favor complete todos los campos</small>
       </div>
+      <div class="ion-margin" *ngIf="myForm.controls.image.value">
+        <div class="image-database" style="background-image: url('{{myForm.controls.image.value}}');">
+        </div>
+      </div>
       <div class="ion-margin">
         <ion-input label="Nombre" label-placement="floating" fill="outline" placeholder="Elkin" formControlName="name"
           (keyup)="findByEmailUserAndName()"></ion-input>
@@ -24,15 +28,14 @@
       <div class="ion-margin">
         <ion-item fill="outline">
           <ion-label position="stacked">Agregar imagen</ion-label>
-          <ion-input type="file" formControlName="image" accept=".jpg, .png"></ion-input>
+          <ion-input type="file" (change)="onFileSelected($event)" accept=".jpg, .png"></ion-input>
         </ion-item>
         <small class="text-danger" *ngIf="exits">Ya tienes un banco de tarjetas con este nombre</small>
       </div>
       <div class="ion-margin">
         <ion-textarea label="Descripción" labelPlacement="floating" fill="outline"
-          placeholder="Descripción del banco a crear"></ion-textarea>
+          placeholder="Descripción del banco a crear" formControlName="description"></ion-textarea>
       </div>
-
     </form>
   </div>
 </ion-content>

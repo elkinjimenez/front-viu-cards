@@ -1,7 +1,56 @@
 <app-go-back [path]="'/dashboard/cards'"></app-go-back>
 <ion-content [fullscreen]="true">
   <div class="ion-text-center" *ngIf="fields.currentBank">
-    <h1>Crear nueva tarjeta</h1>
-    <small>Por favor complete todos los campos</small>
+    <form [formGroup]="myForm">
+      <div class="ion-margin">
+        <h1>Crear nueva tarjeta</h1>
+        <small>Por favor complete todos los campos</small>
+      </div>
+      <div class="ion-margin" *ngIf="myForm.controls.image.value">
+        <div class="image-database" style="background-image: url('{{myForm.controls.image.value}}');">
+        </div>
+      </div>
+      <div class="ion-margin">
+        <ion-item fill="outline">
+          <ion-label position="stacked">Agregar imagen</ion-label>
+          <ion-input type="file" (change)="onFileSelected($event)" accept=".jpg, .png"></ion-input>
+        </ion-item>
+        <small class="text-danger" *ngIf="exits">Ya tienes un banco de tarjetas con este nombre</small>
+      </div>
+      <div class="ion-margin">
+        <ion-input label="Significado en inglés" label-placement="floating" fill="outline" placeholder="Elkin"
+          formControlName="meaningEnglish" (keyup)="findByName()"></ion-input>
+        <div *ngIf="myForm.controls.meaningEnglish.invalid && myForm.controls.meaningEnglish.dirty">
+          <small class="text-danger" *ngIf="myForm.controls.meaningEnglish?.errors?.required">El significado es
+            requerido</small>
+          <small class="text-danger" *ngIf="myForm.controls.meaningEnglish?.errors?.minlength">Mínimo 2
+            caracteres</small>
+          <small class="text-danger" *ngIf="myForm.controls.meaningEnglish?.errors?.maxlength">Máximo 255
+            caracteres</small>
+          <small class="text-danger" *ngIf="myForm.controls.meaningEnglish?.errors?.meaningEnglish">El significado es
+            inválido</small>
+        </div>
+        <small class="text-danger" *ngIf="exits">Ya tienes un banco de tarjetas con este significado</small>
+      </div>
+      <div class="ion-margin">
+        <ion-input label="Significado en español" label-placement="floating" fill="outline" placeholder="Elkin"
+          formControlName="meaningSpanish" (keyup)="findByName()"></ion-input>
+        <div *ngIf="myForm.controls.meaningSpanish.invalid && myForm.controls.meaningSpanish.dirty">
+          <small class="text-danger" *ngIf="myForm.controls.meaningSpanish?.errors?.required">El significado es
+            requerido</small>
+          <small class="text-danger" *ngIf="myForm.controls.meaningSpanish?.errors?.minlength">Mínimo 2
+            caracteres</small>
+          <small class="text-danger" *ngIf="myForm.controls.meaningSpanish?.errors?.maxlength">Máximo 255
+            caracteres</small>
+          <small class="text-danger" *ngIf="myForm.controls.meaningSpanish?.errors?.meaningSpanish">El significado es
+            inválido</small>
+        </div>
+        <small class="text-danger" *ngIf="exits">Ya tienes un banco de tarjetas con este significado</small>
+      </div>
+    </form>
   </div>
 </ion-content>
+<div class="ion-margin">
+  <ion-button class="ion-text-capitalize" fill="solid" expand="block" size="large" (click)="create()"
+    [disabled]="!(myForm.valid && !exits)">Crear tarjeta</ion-button>
+</div>

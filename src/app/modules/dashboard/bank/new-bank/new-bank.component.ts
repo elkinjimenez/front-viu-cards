@@ -20,6 +20,8 @@ import { Utils } from 'src/app/utils/util';
 })
 export class NewBankComponent implements OnInit {
 
+  selectedFile: File | null = null;
+
   exits?= false;
 
   public myForm: FormGroup;
@@ -32,22 +34,40 @@ export class NewBankComponent implements OnInit {
     private utils: Utils,
   ) {
     this.myForm = this.fb.group({
-      name: ['Número', [
+      name: ['Letras', [
         Validators.required,
         Validators.minLength(2),
         Validators.maxLength(255),
       ]],
       image: [''],
+      description: ['example'],
     });
   }
 
   ngOnInit() { }
 
   protected create() {
-    this.fields.currentBank = {
-      name: 'Números',
-    };
-    this.$router.navigate(['/dashboard/cards']);
+    try {
+      this.fields.currentBank = {
+        name: this.myForm.controls.name.value,
+        image: this.myForm.controls.image.value != null ? `${this.myForm.controls.image.value}`.replace(':', 'XDDOSPUNTOS').replace(';', 'XDPUNTOCOMA').replace(',', 'XDCOMA') : null,
+        description: this.myForm.controls.description.value ? this.myForm.controls.description.value : null,
+      };
+      this.$bank.create(this.fields.currentBank, this.fields.user.email!).subscribe(
+        (resp: RespGeneral) => {
+          console.log('Resp CreateBank: ', resp);
+          if (resp.code == 200) {
+            this.fields.currentBank = resp.data as Bank;
+            this.utils.showMessage({ position: 'top', color: 'primary', message: `Banco ${this.fields.currentBank.name} creado exitosamente.` })
+            this.$router.navigate(['/dashboard/cards']);
+          } else {
+            this.utils.showMessage({ position: 'top', color: 'danger', message: resp.message })
+          }
+        }
+      );
+    } catch (error) {
+      this.utils.showMessage({ position: 'top', color: 'danger', message: `Error al crear el banco. Por favor intente de nuevo.` })
+    }
   }
 
   protected findByEmailUserAndName() {
@@ -55,14 +75,29 @@ export class NewBankComponent implements OnInit {
       this.$bank.findByEmailUserAndName(this.fields.user.email, this.myForm.controls.name.value).subscribe(
         (resp: RespGeneral) => {
           console.log('Resp findByEmailUserAndName: ', resp);
-          if (resp.code == 200 && resp.data) {
+          if (resp.code == 200) {
             const list = resp.data as Bank[];
             this.exits = list && list.length > 0;
+          } else if (resp.code == 400) {
+            this.utils.showMessage({ position: 'top', color: 'danger', message: resp.message })
           } else {
             this.exits = false;
           }
         }
       )
+  }
+
+  protected onFileSelected(event: any): void {
+    this.selectedFile = event.target.files[0] as File;
+    let base64: string | null = null;
+    if (this.selectedFile) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        base64 = e.target?.result as string;
+        this.myForm.controls.image.setValue(base64);
+      };
+      reader.readAsDataURL(this.selectedFile);
+    }
   }
 
 }

@@ -2,8 +2,11 @@
 <ion-content [fullscreen]="true" *ngIf="fields.user">
   <div class="ion-text-center" *ngIf="fields.currentBank">
     <h1>{{fields.currentBank.name}}</h1>
+    <div class="ion-margin" *ngIf="fields.currentBank.image">
+      <div class="image-database" style="background-image: url('{{fields.currentBank.image}}');">
+      </div>
+    </div>
     <div *ngIf="listCards.length === 0">
-      <h6>No tienes tarjetas creadas</h6>
       <ion-list class="ion-margin">
         <ion-item routerLink="newCard">
           <ion-thumbnail slot="start">
@@ -13,19 +16,13 @@
         </ion-item>
       </ion-list>
     </div>
-    <div *ngIf="listCards.length === 0">
+    <div *ngIf="listCards.length > 0">
       <ion-list class="ion-margin">
-        <ion-item>
+        <ion-item *ngFor="let word of listCards">
           <ion-thumbnail slot="start">
             <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
           </ion-thumbnail>
-          <ion-label>Item</ion-label>
-        </ion-item>
-        <ion-item>
-          <ion-thumbnail slot="start">
-            <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
-          </ion-thumbnail>
-          <ion-label>Item</ion-label>
+          <ion-label>{{word.text}}</ion-label>
         </ion-item>
       </ion-list>
       <ion-list class="ion-margin">

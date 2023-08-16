@@ -10,7 +10,7 @@
           <ion-thumbnail slot="start">
             <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
           </ion-thumbnail>
-          <ion-label>Crear nuevo banco</ion-label>
+          <ion-label>Crear mi primer banco</ion-label>
         </ion-item>
       </ion-list>
     </div>
@@ -18,7 +18,7 @@
   <div *ngIf="listBanks.length > 0">
     <div class="ion-margin">
       <ion-list>
-        <ion-item routerLink="newBank" *ngFor="let bank of listBanks">
+        <ion-item (click)="selectBank(bank)" *ngFor="let bank of listBanks">
           <ion-thumbnail slot="start">
             <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
           </ion-thumbnail>

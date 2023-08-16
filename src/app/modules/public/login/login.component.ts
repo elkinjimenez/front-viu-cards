@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() { }
 
   validateLogin() {
-    const user = sessionStorage.getItem(btoa('userLoggedIn'));
+    const user = localStorage.getItem(btoa('userLoggedIn'));
     if (user) {
       this.fields.user = JSON.parse(atob(user));
       this.$router.navigate(['/dashboard']);
@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit {
         firstName: 'Luisa',
         lastName: 'W'
       }
-      sessionStorage.setItem(btoa('userLoggedIn'), btoa(JSON.stringify(this.fields.user)));
+      localStorage.setItem(btoa('userLoggedIn'), btoa(JSON.stringify(this.fields.user)));
       this.$router.navigate(['/public']);
     }
   }
@@ -73,7 +73,7 @@ export class LoginComponent implements OnInit {
       if (resp.code == 200) {
         this.fields.user = resp.data as User;
         delete this.fields.user.password;
-        sessionStorage.setItem(btoa('userLoggedIn'), btoa(JSON.stringify(this.fields.user)));
+        localStorage.setItem(btoa('userLoggedIn'), btoa(JSON.stringify(this.fields.user)));
         this.$router.navigate(['/dashboard']);
         this.utils.showMessage({ color: 'primary', message: `Bienvenido ${this.fields.user.firstName} ${this.fields.user.lastName}`, position: 'top' });
       } else {

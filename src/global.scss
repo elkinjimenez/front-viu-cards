@@ -55,3 +55,10 @@ ion-list ion-item {
   --inner-border-width: 0; // Oculta las líneas de separación internas
   --border-width: 0; // Oculta las líneas de separación exteriores
 }
+
+.image-database {
+  height: 100px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
