@@ -52,6 +52,7 @@ export class NewBankComponent implements OnInit {
           console.log('Resp CreateBank: ', resp);
           if (resp.code == 200) {
             this.fields.currentBank = resp.data as Bank;
+            localStorage.setItem('currentBank', JSON.stringify(this.fields.currentBank));
             this.utils.showMessage({ position: 'top', color: 'primary', message: `Banco ${this.fields.currentBank.name} creado exitosamente.` })
             this.$router.navigate(['/dashboard/cards']);
           } else {

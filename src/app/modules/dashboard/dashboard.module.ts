@@ -12,6 +12,7 @@ import { NewCardComponent } from './card/new-card/new-card.component';
 import { CardsComponent } from './card/cards/cards.component';
 import { NewBankComponent } from './bank/new-bank/new-bank.component';
 import { BanksComponent } from './bank/banks/banks.component';
+import { FormatImagePipe } from 'src/app/pipes/format-image.pipe';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { BanksComponent } from './bank/banks/banks.component';
     ReactiveFormsModule,
     GoBackComponent,
     DashboardRoutingModule,
+    FormatImagePipe,
   ]
 })
 export class DashboardModule { }

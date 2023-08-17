@@ -24,4 +24,8 @@ export class BankService {
     return this.$http.post(`${environment.urlApi}bank/create?email=${email}`, body);
   }
 
+  public deleteById(idBank: number) {
+    return this.$http.get(`${environment.urlApi}bank/delete?idBank=${idBank}`);
+  }
+
 }

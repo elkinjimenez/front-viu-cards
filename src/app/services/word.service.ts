@@ -19,4 +19,8 @@ export class WordService {
   public create(body: Word) {
     return this.$http.post(`${environment.urlApi}word/create`, body);
   }
+
+  public deleteById(idWord: number) {
+    return this.$http.get(`${environment.urlApi}word/delete?idWord=${idWord}`);
+  }
 }

@@ -46,7 +46,12 @@ export class BanksComponent implements OnInit {
 
   protected selectBank(bank: Bank) {
     this.fields.currentBank = bank;
+    localStorage.setItem('currentBank', JSON.stringify(this.fields.currentBank));
     this.$router.navigate(['/dashboard/cards']);
+  }
+
+  protected delete(bank: Bank) {
+    console.log('Delete: ', bank);
   }
 
 }

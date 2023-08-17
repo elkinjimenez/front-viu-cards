@@ -1,9 +1,9 @@
-<app-go-back [path]="'/dashboard'"></app-go-back>
+<app-go-back></app-go-back>
 <ion-content [fullscreen]="true">
   <div class="ion-text-center">
     <form [formGroup]="myForm">
       <div class="ion-margin">
-        <h1>Crear nuevo banco</h1>
+        <h3>Crear nuevo banco</h3>
         <small>Por favor complete todos los campos</small>
       </div>
       <div class="ion-margin" *ngIf="myForm.controls.image.value">

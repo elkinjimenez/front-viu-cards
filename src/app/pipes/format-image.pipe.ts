@@ -1,7 +1,8 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: 'formatImage'
+  name: 'formatImage',
+  standalone: true,
 })
 export class FormatImagePipe implements PipeTransform {
 
