@@ -10,6 +10,14 @@
         </div>
       </div>
       <div class="ion-margin">
+        <ion-item>
+          <ion-label id="image-new-bank" position="stacked">Agregar imagen</ion-label>
+          <ion-input class="ion-margin-top ion-margin-bottom" aria-labelledby="image-new-bank" type="file"
+            (change)="onFileSelected($event)" accept=".jpg, .png"></ion-input>
+        </ion-item>
+        <small class="text-danger" *ngIf="exits">Ya tienes un banco de tarjetas con este nombre</small>
+      </div>
+      <div class="ion-margin">
         <ion-input label="Nombre" label-placement="floating" fill="outline" placeholder="Elkin" formControlName="name"
           (keyup)="findByEmailUserAndName()"></ion-input>
         <div *ngIf="myForm.controls.name.invalid && myForm.controls.name.dirty">
@@ -24,13 +32,7 @@
         </div>
         <small class="text-danger" *ngIf="exits">Ya tienes un banco de tarjetas con este nombre</small>
       </div>
-      <div class="ion-margin">
-        <ion-item fill="outline">
-          <ion-label position="stacked">Agregar imagen</ion-label>
-          <ion-input type="file" (change)="onFileSelected($event)" accept=".jpg, .png"></ion-input>
-        </ion-item>
-        <small class="text-danger" *ngIf="exits">Ya tienes un banco de tarjetas con este nombre</small>
-      </div>
+
       <div class="ion-margin">
         <ion-textarea label="Descripción" labelPlacement="floating" fill="outline"
           placeholder="Descripción del banco a crear" formControlName="description"></ion-textarea>

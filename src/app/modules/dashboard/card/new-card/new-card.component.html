@@ -11,9 +11,10 @@
         </div>
       </div>
       <div class="ion-margin">
-        <ion-item fill="outline">
-          <ion-label position="stacked">Agregar imagen</ion-label>
-          <ion-input type="file" (change)="onFileSelected($event)" accept=".jpg, .png"></ion-input>
+        <ion-item>
+          <ion-label id="image-new-card" position="stacked">Agregar imagen</ion-label>
+          <ion-input class="ion-margin-top ion-margin-bottom" aria-labelledby="image-new-card" type="file"
+            (change)="onFileSelected($event)" accept=".jpg, .png"></ion-input>
         </ion-item>
         <small class="text-danger" *ngIf="exits">Ya tienes un banco de tarjetas con este nombre</small>
       </div>
