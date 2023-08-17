@@ -1,7 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
+import { Utils } from 'src/app/utils/util';
 
 @Component({
   selector: 'app-go-back',
@@ -12,8 +13,16 @@ import { IonicModule } from '@ionic/angular';
 })
 export class GoBackComponent implements OnInit {
 
-  constructor() { }
+  @Input() path: string | undefined;
+
+  constructor(
+    protected utils: Utils,
+  ) { }
 
   ngOnInit() { }
+
+  goBack() {
+    this.utils.navigate(this.path!);
+  }
 
 }

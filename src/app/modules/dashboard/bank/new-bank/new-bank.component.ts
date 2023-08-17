@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { Bank } from 'src/app/models/bank';
 import { RespGeneral } from 'src/app/models/resp-general';
 import { BankService } from 'src/app/services/bank.service';
@@ -24,7 +23,6 @@ export class NewBankComponent implements OnInit {
     private fb: FormBuilder,
     private $bank: BankService,
     private fields: FieldsService,
-    private $router: Router,
     private utils: Utils,
   ) {
     this.myForm = this.fb.group({
@@ -54,7 +52,7 @@ export class NewBankComponent implements OnInit {
             this.fields.currentBank = resp.data as Bank;
             localStorage.setItem('currentBank', JSON.stringify(this.fields.currentBank));
             this.utils.showMessage({ position: 'top', color: 'primary', message: `Banco ${this.fields.currentBank.name} creado exitosamente.` })
-            this.$router.navigate(['/dashboard/cards']);
+            this.utils.navigate('/dashboard/cards');
           } else {
             this.utils.showMessage({ position: 'top', color: 'danger', message: resp.message })
           }

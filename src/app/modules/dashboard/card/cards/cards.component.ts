@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { ActionSheetController } from '@ionic/angular';
 import { Bank } from 'src/app/models/bank';
 import { RespGeneral } from 'src/app/models/resp-general';
@@ -20,11 +19,10 @@ export class CardsComponent implements OnInit {
 
   constructor(
     protected fields: FieldsService,
-    private utils: Utils,
+    protected utils: Utils,
     private $word: WordService,
     private $bank: BankService,
     private actionSheetController: ActionSheetController,
-    private $router: Router,
   ) { }
 
   ngOnInit() {
@@ -97,7 +95,7 @@ export class CardsComponent implements OnInit {
         console.log('Resp deleteIdBank: ', resp);
         if (resp.code == 200) {
           this.utils.showMessage({ color: 'primary', position: 'top', message: `Banco ${bank.name} eliminado correctamente.` });
-          this.$router.navigate(['/dashboard']);
+          this.utils.navigate('/dashboard');
         } else {
           this.utils.showMessage({ position: 'top', color: 'danger', message: resp.message });
         }

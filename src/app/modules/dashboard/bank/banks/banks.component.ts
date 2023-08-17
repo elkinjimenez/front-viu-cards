@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Bank } from 'src/app/models/bank';
 import { RespGeneral } from 'src/app/models/resp-general';
 import { BankService } from 'src/app/services/bank.service';
@@ -17,9 +16,8 @@ export class BanksComponent implements OnInit {
 
   constructor(
     protected fields: FieldsService,
-    private utils: Utils,
+    protected utils: Utils,
     private $bank: BankService,
-    private $router: Router,
   ) {
     this.findBankByEmailUser();
   }
@@ -47,11 +45,7 @@ export class BanksComponent implements OnInit {
   protected selectBank(bank: Bank) {
     this.fields.currentBank = bank;
     localStorage.setItem('currentBank', JSON.stringify(this.fields.currentBank));
-    this.$router.navigate(['/dashboard/cards']);
-  }
-
-  protected delete(bank: Bank) {
-    console.log('Delete: ', bank);
+    this.utils.navigate('/dashboard/cards');
   }
 
 }

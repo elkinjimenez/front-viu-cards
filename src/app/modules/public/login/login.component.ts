@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { RespGeneral } from 'src/app/models/resp-general';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
@@ -22,8 +21,7 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private $auth: AuthService,
     private fields: FieldsService,
-    private $router: Router,
-    private utils: Utils,
+    protected utils: Utils,
   ) {
     this.validateLogin();
     this.formLogin = this.fb.group({
@@ -47,7 +45,7 @@ export class LoginComponent implements OnInit {
     const user = localStorage.getItem(btoa('userLoggedIn'));
     if (user) {
       this.fields.user = JSON.parse(atob(user));
-      this.$router.navigate(['/dashboard']);
+      this.utils.navigate('/dashboard');
     } else {
       this.fields.user = {
         email: 'ef.c@df.com',
@@ -55,7 +53,7 @@ export class LoginComponent implements OnInit {
         lastName: 'W'
       }
       localStorage.setItem(btoa('userLoggedIn'), btoa(JSON.stringify(this.fields.user)));
-      this.$router.navigate(['/public']);
+      this.utils.navigate('/public');
     }
   }
 
@@ -70,7 +68,7 @@ export class LoginComponent implements OnInit {
         this.fields.user = resp.data as User;
         delete this.fields.user.password;
         localStorage.setItem(btoa('userLoggedIn'), btoa(JSON.stringify(this.fields.user)));
-        this.$router.navigate(['/dashboard']);
+        this.utils.navigate('/dashboard');
         this.utils.showMessage({ color: 'primary', message: `Bienvenido ${this.fields.user.firstName} ${this.fields.user.lastName}`, position: 'top' });
       } else {
         this.utils.showMessage({ color: 'danger', message: resp.message, position: 'top' });

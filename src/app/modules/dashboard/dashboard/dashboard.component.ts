@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { Subscription } from 'rxjs';
 import { FieldsService } from 'src/app/services/fields.service';
+import { Utils } from 'src/app/utils/util';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,6 +16,7 @@ export class DashboardComponent implements OnInit {
   constructor(
     protected fields: FieldsService,
     private platform: Platform,
+    protected utils: Utils,
   ) { }
 
   ngOnInit() {

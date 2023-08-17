@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 import { RespGeneral } from 'src/app/models/resp-general';
 import { Word } from 'src/app/models/word';
 import { FieldsService } from 'src/app/services/fields.service';
@@ -23,7 +22,6 @@ export class NewCardComponent implements OnInit {
   constructor(
     protected fields: FieldsService,
     private fb: FormBuilder,
-    private $router: Router,
     private utils: Utils,
     private $word: WordService,
   ) {
@@ -63,7 +61,7 @@ export class NewCardComponent implements OnInit {
           console.log('Resp CreateWord: ', resp);
           if (resp.code == 200) {
             this.utils.showMessage({ position: 'top', color: 'primary', message: `Tarjeta ${currentWord.text} creada exitosamente.` })
-            this.$router.navigate(['/dashboard/cards']);
+            this.utils.navigate('/dashboard/cards');
           } else {
             this.utils.showMessage({ position: 'top', color: 'danger', message: resp.message })
           }

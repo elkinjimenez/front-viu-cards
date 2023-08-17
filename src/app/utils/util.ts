@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { Router } from "@angular/router";
 import { ToastController } from "@ionic/angular";
 
 import * as sha256 from 'crypto-js/sha256';
@@ -10,6 +11,7 @@ export class Utils {
 
   constructor(
     private toastController: ToastController,
+    private $router: Router,
   ) { }
 
   public async showMessage(m: modalMessage) {
@@ -25,6 +27,10 @@ export class Utils {
   public convertSHA256(text: string) {
     const hash = sha256(text).toString();
     return hash;
+  }
+
+  public navigate(path: string) {
+    this.$router.navigate([path], { replaceUrl: true });
   }
 
 }

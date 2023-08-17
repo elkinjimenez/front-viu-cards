@@ -1,5 +1,5 @@
 <ion-fab slot="fixed" vertical="top" horizontal="start">
-  <ion-fab-button routerLink="register">
+  <ion-fab-button (click)="utils.navigate('/public/register')">
     <ion-icon name="person-add-outline"></ion-icon>
   </ion-fab-button>
 </ion-fab>
@@ -33,7 +33,7 @@
         </div>
       </div>
       <div class="ion-margin">
-        <ion-router-link routerLink="/dashboard">TEST</ion-router-link>
+        <a (click)="utils.navigate('/dashboard')">TEST</a>
       </div>
     </form>
   </div>

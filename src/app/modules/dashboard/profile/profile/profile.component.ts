@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { ActionSheetController } from '@ionic/angular';
 import { FieldsService } from 'src/app/services/fields.service';
+import { Utils } from 'src/app/utils/util';
 
 @Component({
   selector: 'app-profile',
@@ -13,7 +13,7 @@ export class ProfileComponent implements OnInit {
   constructor(
     private actionSheetController: ActionSheetController,
     protected fields: FieldsService,
-    private $router: Router,
+    private utils: Utils,
   ) { }
 
   ngOnInit() { }
@@ -43,7 +43,7 @@ export class ProfileComponent implements OnInit {
     this.fields.user = {};
     sessionStorage.clear();
     localStorage.clear();
-    this.$router.navigate(['/public']);
+    this.utils.navigate('/public');
   }
 
 }

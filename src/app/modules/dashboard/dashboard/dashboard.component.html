@@ -1,13 +1,13 @@
 <ion-router-outlet></ion-router-outlet>
 <ion-tabs>
   <ion-tab-bar slot="bottom">
-    <ion-tab-button routerLink="/dashboard/">
+    <ion-tab-button (click)="utils.navigate('/dashboard/')">
       <ion-icon name="home-outline"></ion-icon>
     </ion-tab-button>
-    <ion-tab-button routerLink="newBank">
+    <ion-tab-button (click)="utils.navigate('/dashboard/newBank')">
       <ion-icon size="large" name="add-circle-outline"></ion-icon>
     </ion-tab-button>
-    <ion-tab-button routerLink="profile">
+    <ion-tab-button (click)="utils.navigate('/dashboard/profile')">
       <ion-icon name="person-outline"></ion-icon>
     </ion-tab-button>
   </ion-tab-bar>
