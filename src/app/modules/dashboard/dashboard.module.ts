@@ -13,6 +13,8 @@ import { CardsComponent } from './card/cards/cards.component';
 import { NewBankComponent } from './bank/new-bank/new-bank.component';
 import { BanksComponent } from './bank/banks/banks.component';
 import { FormatImagePipe } from 'src/app/pipes/format-image.pipe';
+import { ListBanksComponent } from './practice/list-banks/list-banks.component';
+import { PracticeComponent } from './practice/practice/practice.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +24,8 @@ import { FormatImagePipe } from 'src/app/pipes/format-image.pipe';
     NewBankComponent,
     CardsComponent,
     NewCardComponent,
+    ListBanksComponent,
+    PracticeComponent,
   ],
   imports: [
     CommonModule,

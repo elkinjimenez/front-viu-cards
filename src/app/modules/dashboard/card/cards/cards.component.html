@@ -1,4 +1,4 @@
-<app-go-back [path]="'/dashboard'"></app-go-back>
+<app-go-back [path]="'/dashboard/banks'"></app-go-back>
 <ion-content [fullscreen]="true" *ngIf="fields.user">
   <div class="ion-text-center" *ngIf="fields.currentBank">
     <h3><b>Banco:</b> {{fields.currentBank.name}}</h3>
@@ -7,7 +7,7 @@
       <div class="image-database" style="background-image: url('{{fields.currentBank.image | formatImage}}');">
       </div>
     </div>
-    <div *ngIf="listCards.length === 0">
+    <div *ngIf="fields.listCards.length === 0">
       <ion-list class="ion-margin">
         <ion-item (click)="utils.navigate('/dashboard/cards/newCard')">
           <ion-thumbnail slot="start">
@@ -17,22 +17,22 @@
         </ion-item>
       </ion-list>
     </div>
-    <div *ngIf="listCards.length > 0">
-      <ion-list class="ion-margin">
-        <ion-item *ngFor="let word of listCards">
-          <ion-thumbnail slot="start">
-            <img [alt]="word.text" [src]="word.image | formatImage" />
-          </ion-thumbnail>
-          <ion-label>{{word.text}}</ion-label>
-          <ion-icon slot="end" color="danger" (click)="removeCard(word)" name="trash-outline"></ion-icon>
-        </ion-item>
-      </ion-list>
+    <div *ngIf="fields.listCards.length > 0">
       <ion-list class="ion-margin">
         <ion-item (click)="utils.navigate('/dashboard/cards/newCard')">
           <ion-thumbnail slot="start">
             <img alt="Image demo" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
           </ion-thumbnail>
           <ion-label>Agregar tarjeta</ion-label>
+        </ion-item>
+      </ion-list>
+      <ion-list class="ion-margin">
+        <ion-item *ngFor="let word of fields.listCards">
+          <ion-thumbnail slot="start">
+            <img [alt]="word.text" [src]="word.image | formatImage" />
+          </ion-thumbnail>
+          <ion-label>{{word.text}}</ion-label>
+          <ion-icon slot="end" color="danger" (click)="removeCard(word)" name="trash-outline"></ion-icon>
         </ion-item>
       </ion-list>
     </div>

@@ -1,0 +1,70 @@
+<app-go-back [path]="'/dashboard'"></app-go-back>
+<ion-content [fullscreen]="true">
+  <div class="ion-text-center">
+    <h3>{{fields.currentBank.name}}</h3>
+  </div>
+  <div class="ion-margin">
+    <div *ngIf="currentCard?.word?.image">
+      <!-- TIPO 1 -->
+      <section *ngIf="currentCard.type === 1">
+        <div class="image-practice" style="background-image: url('{{currentCard.word!.image | formatImage}}');"></div>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-button class="ion-text-capitalize" [fill]="'outline'" expand="block"
+                size="large">{{newListCards[0].text}}</ion-button>
+            </ion-col>
+            <ion-col>
+              <ion-button class="ion-text-capitalize" [fill]="'solid'" expand="block"
+                size="large">{{newListCards[1].text}}</ion-button>
+            </ion-col>
+            <ion-col>
+              <ion-button class="ion-text-capitalize" [fill]="'outline'" expand="block"
+                size="large">{{newListCards[2].text}}</ion-button>
+            </ion-col>
+            <ion-col>
+              <ion-button class="ion-text-capitalize" [fill]="'outline'" expand="block"
+                size="large">{{newListCards[3].text}}</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </section>
+      <section *ngIf="currentCard.type === 2">
+        <small>Seleccione la imagen correcta para:</small>
+        <h1>{{currentCard.word?.text}}</h1>
+        <ion-grid>
+          <ion-row>
+            <ion-col size="6">
+              <div class="image-practice-select"
+                style="background-image: url('{{newListCards[0].image| formatImage}}');"></div>
+            </ion-col>
+            <ion-col size="6">
+              <div class="image-practice-select"
+                style="background-image: url('{{newListCards[1].image| formatImage}}');"></div>
+            </ion-col>
+            <ion-col size="6">
+              <div class="image-practice-select"
+                style="background-image: url('{{newListCards[2].image| formatImage}}');"></div>
+            </ion-col>
+            <ion-col size="6">
+              <div class="image-practice-select"
+                style="background-image: url('{{newListCards[3].image| formatImage}}');"></div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </section>
+      <section *ngIf="currentCard.type === 3">
+        <div class="image-practice" style="background-image: url('{{currentCard.word!.image | formatImage}}');"></div>
+        <div class="ion-text-center ion-margin">
+          <small>Escribe su significado en inglés:</small>
+        </div>
+        <ion-input label="Significado en inglés" label-placement="floating" fill="outline"
+          placeholder="Elkin"></ion-input>
+      </section>
+    </div>
+  </div>
+</ion-content>
+<div class="ion-margin">
+  <ion-button class="ion-text-capitalize" fill="solid" expand="block" size="large"
+    [disabled]="!(currentCard.complete)">Comprobar</ion-button>
+</div>

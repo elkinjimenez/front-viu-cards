@@ -6,11 +6,11 @@ import { FieldsService } from 'src/app/services/fields.service';
 import { Utils } from 'src/app/utils/util';
 
 @Component({
-  selector: 'app-banks',
-  templateUrl: './banks.component.html',
-  styleUrls: ['./banks.component.scss'],
+  selector: 'app-list-banks',
+  templateUrl: './list-banks.component.html',
+  styleUrls: ['./list-banks.component.scss'],
 })
-export class BanksComponent implements OnInit {
+export class ListBanksComponent implements OnInit {
 
   constructor(
     protected fields: FieldsService,
@@ -20,8 +20,7 @@ export class BanksComponent implements OnInit {
     this.findBankByEmailUser();
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   findBankByEmailUser() {
     if (this.fields?.user?.email) {
@@ -43,7 +42,7 @@ export class BanksComponent implements OnInit {
   protected selectBank(bank: Bank) {
     this.fields.currentBank = bank;
     localStorage.setItem('currentBank', JSON.stringify(this.fields.currentBank));
-    this.utils.navigate('/dashboard/cards');
+    this.utils.navigate('/dashboard/practice');
   }
 
 }

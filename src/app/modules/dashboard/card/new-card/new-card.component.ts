@@ -44,10 +44,6 @@ export class NewCardComponent implements OnInit {
 
   ngOnInit() { }
 
-  findByName() {
-
-  }
-
   create() {
     try {
       let currentWord = {

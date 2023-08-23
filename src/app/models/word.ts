@@ -4,4 +4,5 @@ export interface Word {
   meaning: string;
   image: string;
   idBank: number;
+  date: string;
 }

@@ -26,13 +26,13 @@ export class NewBankComponent implements OnInit {
     private utils: Utils,
   ) {
     this.myForm = this.fb.group({
-      name: ['Letras', [
+      name: ['', [
         Validators.required,
         Validators.minLength(2),
         Validators.maxLength(255),
       ]],
       image: [''],
-      description: ['example'],
+      description: [''],
     });
   }
 

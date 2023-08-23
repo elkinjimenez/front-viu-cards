@@ -61,4 +61,22 @@ ion-list ion-item {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  border-radius: 5px;
+}
+
+.image-practice {
+  height: 250px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 5px;
+  // border: solid var(--ion-color-primary);
+}
+
+.image-practice-select {
+  height: 100px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 5px;
 }

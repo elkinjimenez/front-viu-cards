@@ -15,8 +15,6 @@ import { Utils } from 'src/app/utils/util';
 })
 export class CardsComponent implements OnInit {
 
-  protected listCards: Word[] = [];
-
   constructor(
     protected fields: FieldsService,
     protected utils: Utils,
@@ -35,7 +33,7 @@ export class CardsComponent implements OnInit {
         (resp: RespGeneral) => {
           console.log('Resp findByIdBank: ', resp);
           if (resp.code == 200 && resp.data) {
-            this.listCards = resp.data as Word[];
+            this.fields.listCards = resp.data as Word[];
           } else {
             this.utils.showMessage({ position: 'top', color: 'danger', message: resp.message });
           }

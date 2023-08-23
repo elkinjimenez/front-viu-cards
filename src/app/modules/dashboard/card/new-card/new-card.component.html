@@ -20,7 +20,7 @@
       </div>
       <div class="ion-margin">
         <ion-input label="Significado en inglés" label-placement="floating" fill="outline" placeholder="Elkin"
-          formControlName="meaningEnglish" (keyup)="findByName()"></ion-input>
+          formControlName="meaningEnglish"></ion-input>
         <div *ngIf="myForm.controls.meaningEnglish.invalid && myForm.controls.meaningEnglish.dirty">
           <small class="text-danger" *ngIf="myForm.controls.meaningEnglish?.errors?.required">El significado es
             requerido</small>
@@ -35,7 +35,7 @@
       </div>
       <div class="ion-margin">
         <ion-input label="Significado en español" label-placement="floating" fill="outline" placeholder="Elkin"
-          formControlName="meaningSpanish" (keyup)="findByName()"></ion-input>
+          formControlName="meaningSpanish"></ion-input>
         <div *ngIf="myForm.controls.meaningSpanish.invalid && myForm.controls.meaningSpanish.dirty">
           <small class="text-danger" *ngIf="myForm.controls.meaningSpanish?.errors?.required">El significado es
             requerido</small>
