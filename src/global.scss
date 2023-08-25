@@ -80,3 +80,7 @@ ion-list ion-item {
   background-position: center;
   border-radius: 5px;
 }
+
+.border-selected {
+  border: solid var(--ion-color-primary) 4px;
+}
