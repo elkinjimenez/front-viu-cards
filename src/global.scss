@@ -84,3 +84,14 @@ ion-list ion-item {
 .border-selected {
   border: solid var(--ion-color-primary) 4px;
 }
+
+.myCard,
+img,
+ion-list {
+  border-radius: 5px;
+}
+
+.icon-profile {
+  font-size: 40vw;
+  color: var(--ion-color-primary);
+}

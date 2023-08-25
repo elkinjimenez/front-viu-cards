@@ -3,6 +3,7 @@ export interface Word {
   text: string;
   meaning: string;
   image: string;
+  retentionLevel?: number;
   idBank: number;
   date: string;
 }

@@ -1,11 +1,14 @@
-<app-go-back [path]="'/dashboard'"></app-go-back>
+<ion-fab slot="fixed" vertical="top" horizontal="start">
+  <ion-icon (click)="goBack()" size="large" name="arrow-back-outline"></ion-icon>
+</ion-fab>
 <ion-content [fullscreen]="true">
   <div class="ion-text-center">
     <h3>{{fields.currentBank.name}}</h3>
+    <small class="ion-no-margin">{{fields.currentBank.description}}</small>
   </div>
   <div class="ion-margin">
     <form [formGroup]="myForm">
-      <div *ngIf="currentCard?.word?.image">
+      <div *ngIf="currentCard && newListCards.length > 0">
         <!-- TIPO 1 -->
         <section *ngIf="currentCard.type === 1">
           <div class="image-practice" style="background-image: url('{{currentCard.word!.image | formatImage}}');"></div>
@@ -52,10 +55,18 @@
           </div>
         </section>
       </div>
+      <div *ngIf="newListCards.length === 0" class="ion-text-center">
+        <ion-icon name="leaf-outline" class="icon-profile"></ion-icon>
+        <h3 class="ion-margin">Banco vacío</h3>
+      </div>
     </form>
   </div>
 </ion-content>
-<div class="ion-margin">
+<div class="ion-margin" *ngIf="newListCards.length > 0">
   <ion-button (click)="validateResponse()" class="ion-text-capitalize" fill="solid" expand="block" size="large"
     [disabled]="!(currentCard.complete && myForm.valid)">Comprobar</ion-button>
+</div>
+<div class="ion-margin" *ngIf="newListCards.length === 0">
+  <ion-button (click)="utils.navigate('/dashboard/cards')" class="ion-text-capitalize" fill="solid" expand="block"
+    size="large">Crear tarjetas</ion-button>
 </div>

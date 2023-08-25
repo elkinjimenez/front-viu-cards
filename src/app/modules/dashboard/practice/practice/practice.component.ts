@@ -7,6 +7,7 @@ import { Utils } from 'src/app/utils/util';
 
 import * as lodash from 'lodash';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActionSheetController } from '@ionic/angular';
 
 @Component({
   selector: 'app-practice',
@@ -17,17 +18,18 @@ export class PracticeComponent implements OnInit {
 
   public myForm: FormGroup;
 
-  protected newListCards: Word[] = [];
-  private errorListCards: Word[] = [];
+  protected newListCards: CurrentCard[] = [];
+  private errorListCards: CurrentCard[] = [];
   protected listOptions: CardOption[] = [];
 
-  protected currentCard: CurrentCard = { complete: false, };
+  protected currentCard: CurrentCard = { complete: false, isError: false };
 
   constructor(
     private fb: FormBuilder,
     protected fields: FieldsService,
     private $word: WordService,
-    private utils: Utils,
+    protected utils: Utils,
+    private actionSheetController: ActionSheetController,
   ) {
     this.myForm = this.fb.group({
       responseText: ['', [
@@ -49,7 +51,15 @@ export class PracticeComponent implements OnInit {
           console.log('Resp findByIdBank: ', resp);
           if (resp.code == 200 && resp.data) {
             this.fields.listCards = resp.data as Word[];
-            this.newListCards = lodash.shuffle(this.fields.listCards);
+            this.newListCards = [];
+            const list = lodash.shuffle(this.fields.listCards);
+            list.forEach(word => {
+              this.newListCards.push({
+                word: { ...word },
+                complete: false,
+                isError: false,
+              })
+            })
             if (this.newListCards.length > 0) {
               this.selectNewCard();
             }
@@ -66,9 +76,8 @@ export class PracticeComponent implements OnInit {
   private selectNewCard() {
     this.myForm.reset();
     if (this.newListCards.length > 0) {
-      this.currentCard.word = this.newListCards.shift();
+      this.currentCard = this.newListCards.shift()!;
       this.currentCard.type = Math.floor(Math.random() * 3) + 1;
-      this.currentCard.complete = false;
       if (this.currentCard.type !== 3) {
         this.optionsForType1();
       }
@@ -87,12 +96,19 @@ export class PracticeComponent implements OnInit {
   protected validateResponse() {
     if (this.currentCard.word?.text.toLowerCase().trim() == this.myForm.controls.responseText.value.toLowerCase().trim()) {
       this.utils.showMessage({ message: `Excelente.`, color: 'primary', position: 'bottom' });
-      this.selectNewCard();
+      this.currentCard!.word!.retentionLevel = 3;
     } else {
-      this.errorListCards.push({ ...this.currentCard!.word! });
+      this.errorListCards.push({ word: { ...this.currentCard!.word! }, complete: false, isError: true });
+      this.currentCard!.word!.retentionLevel = this.currentCard.isError ? 1 : 2;
       this.utils.showMessage({ message: `Respuesta incorrecta, lo lograrás a la próxima.`, color: 'danger', position: 'bottom' });
-      this.selectNewCard();
     }
+    const wordUpdate: Word = { ...this.currentCard.word! };
+    this.$word.update(wordUpdate).subscribe(
+      (resp: RespGeneral) => {
+        console.log('Resp updateWord: ', resp);
+      }
+    );
+    this.selectNewCard();
   }
 
   private optionsForType1() {
@@ -128,12 +144,34 @@ export class PracticeComponent implements OnInit {
     this.change();
   }
 
+  protected async goBack() {
+    const actionSheet = await this.actionSheetController.create({
+      header: `¿Está seguro que desea salir de la práctica?`,
+      subHeader: `El conteo de los intentos fallidos no se perderá. Al volver, iniciará de nuevo la práctica.`,
+      buttons: [
+        {
+          text: 'No, seguir practicando',
+          icon: 'arrow-undo-outline'
+        },
+        {
+          text: 'Si, abandonar práctica',
+          icon: 'close-outline',
+          handler: () => {
+            this.utils.navigate('/dashboard');
+          }
+        }
+      ]
+    });
+    await actionSheet.present();
+  }
+
 }
 
 interface CurrentCard {
   word?: Word;
   type?: number;
   complete: boolean;
+  isError: boolean;
 }
 
 interface CardOption extends Word {
