@@ -13,7 +13,7 @@ export class ProfileComponent implements OnInit {
   constructor(
     private actionSheetController: ActionSheetController,
     protected fields: FieldsService,
-    private utils: Utils,
+    protected utils: Utils,
   ) { }
 
   ngOnInit() { }
@@ -41,8 +41,8 @@ export class ProfileComponent implements OnInit {
 
   private logout() {
     this.fields.user = {};
-    sessionStorage.clear();
-    localStorage.clear();
+    // sessionStorage.clear();
+    // localStorage.clear();
     this.utils.navigate('/public');
   }
 

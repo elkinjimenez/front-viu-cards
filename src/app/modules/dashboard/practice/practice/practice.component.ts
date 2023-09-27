@@ -95,7 +95,7 @@ export class PracticeComponent implements OnInit {
 
   protected validateResponse() {
     if (this.currentCard.word?.text.toLowerCase().trim() == this.myForm.controls.responseText.value.toLowerCase().trim()) {
-      this.utils.showMessage({ message: `Excelente.`, color: 'primary', position: 'bottom' });
+      this.utils.showMessage({ message: `Excelente. Significado: ${this.currentCard.word?.meaning}`, color: 'primary', position: 'bottom' });
       this.currentCard!.word!.retentionLevel = 3;
     } else {
       this.errorListCards.push({ word: { ...this.currentCard!.word! }, complete: false, isError: true });

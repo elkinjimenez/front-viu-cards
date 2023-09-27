@@ -57,7 +57,8 @@
       </div>
       <div *ngIf="newListCards.length === 0" class="ion-text-center">
         <ion-icon name="leaf-outline" class="icon-profile"></ion-icon>
-        <h3 class="ion-margin">Banco vacío</h3>
+        <h3 class="ion-margin">Banco completado</h3>
+        <h2>Excelente trabajo</h2>
       </div>
     </form>
   </div>
@@ -67,6 +68,6 @@
     [disabled]="!(currentCard.complete && myForm.valid)">Comprobar</ion-button>
 </div>
 <div class="ion-margin" *ngIf="newListCards.length === 0">
-  <ion-button (click)="utils.navigate('/dashboard/cards')" class="ion-text-capitalize" fill="solid" expand="block"
-    size="large">Crear tarjetas</ion-button>
+  <ion-button (click)="utils.navigate('/dashboard')" class="ion-text-capitalize" fill="outline" expand="block"
+    size="large">Zona de práctiva</ion-button>
 </div>

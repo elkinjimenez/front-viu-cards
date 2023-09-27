@@ -51,6 +51,12 @@
   height: 100%;
 }
 
+.content-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 ion-list ion-item {
   --inner-border-width: 0; // Oculta las líneas de separación internas
   --border-width: 0; // Oculta las líneas de separación exteriores
@@ -94,4 +100,13 @@ ion-list {
 .icon-profile {
   font-size: 40vw;
   color: var(--ion-color-primary);
+}
+
+.image-profile {
+  height: 150px;
+  width: 150px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 50%;
 }

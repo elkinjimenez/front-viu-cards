@@ -15,6 +15,8 @@ import { BanksComponent } from './bank/banks/banks.component';
 import { FormatImagePipe } from 'src/app/pipes/format-image.pipe';
 import { ListBanksComponent } from './practice/list-banks/list-banks.component';
 import { PracticeComponent } from './practice/practice/practice.component';
+import { ChangePasswordComponent } from './profile/change-password/change-password.component';
+import { EditProfileComponent } from './profile/edit-profile/edit-profile.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,8 @@ import { PracticeComponent } from './practice/practice/practice.component';
     NewCardComponent,
     ListBanksComponent,
     PracticeComponent,
+    ChangePasswordComponent,
+    EditProfileComponent,
   ],
   imports: [
     CommonModule,

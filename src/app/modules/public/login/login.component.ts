@@ -25,13 +25,13 @@ export class LoginComponent implements OnInit {
   ) {
     this.validateLogin();
     this.formLogin = this.fb.group({
-      email: ['example2@example.com', [
+      email: ['', [
         Validators.required,
         Validators.email,
         Validators.minLength(2),
         Validators.maxLength(255),
       ]],
-      password: ['12345', [
+      password: ['', [
         Validators.required,
         Validators.minLength(2),
         Validators.maxLength(255),
@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
     const user = localStorage.getItem(btoa('userLoggedIn'));
     if (user) {
       this.fields.user = JSON.parse(atob(user));
-      this.utils.navigate('/dashboard');
+      // this.utils.navigate('/dashboard');
     } else {
       this.fields.user = {
         email: 'ef.c@df.com',

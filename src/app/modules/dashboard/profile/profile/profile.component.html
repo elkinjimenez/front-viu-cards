@@ -1,14 +1,18 @@
 <ion-content class="ion-text-center ion-padding-top">
-  <ion-icon name="person-circle-outline" class="icon-profile ion-margin-top"></ion-icon>
+  <div class="ion-margin content-center">
+    <div class="image-profile"
+      style="background-image: url('https://scontent.fbaq6-1.fna.fbcdn.net/v/t39.30808-6/255403129_4347018265420622_6986959785644888096_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=a2f6c7&_nc_eui2=AeF_THA0VE0GoXq_luLNbUGwJ4Dd4t7E-NgngN3i3sT42IJc9prLRbAK8dXAHR2hp6TSlMloq0H-zRDUuTs9Knqe&_nc_ohc=vNNI3x8kVzEAX-uQG5u&_nc_zt=23&_nc_ht=scontent.fbaq6-1.fna&oh=00_AfC6IbKo8dir5bMIubH22OM9LJfau4oE42wWW4YoE0W7MQ&oe=651772EF');">
+    </div>
+  </div>
   <h3>{{fields.user.firstName}} {{fields.user.lastName}}</h3>
   <h6>{{fields.user.email}}</h6>
 </ion-content>
 <ion-list>
-  <ion-item>
+  <ion-item (click)="utils.navigate('/dashboard/editProfile/')">
     <ion-icon slot="start" name="person"></ion-icon>
     <ion-label>Mis datos</ion-label>
   </ion-item>
-  <ion-item>
+  <ion-item (click)="utils.navigate('/dashboard/changePassword/')">
     <ion-icon slot="start" name="key"></ion-icon>
     <ion-label>Cambiar contraseña</ion-label>
   </ion-item>
